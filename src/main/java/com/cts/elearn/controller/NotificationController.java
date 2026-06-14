@@ -11,6 +11,11 @@ import java.util.List;
 @RequestMapping("/notifications") // Base path for all endpoints
 public class NotificationController {
 
+    @GetMapping("/test")
+    public String test() {
+        return "Notification Service Working";
+    }
+
     @Autowired
     private NotificationService notificationService;
 

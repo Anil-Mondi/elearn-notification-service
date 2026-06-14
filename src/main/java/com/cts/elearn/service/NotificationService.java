@@ -29,45 +29,52 @@ public class NotificationService {
 	/*
 	 * @Autowired private SmsService smsService; // New SMS service
 	 */
-    @Autowired
-    private UserClient userClient;  // Fetch email & phone number from `user-service`
+//    @Autowired
+//    private UserClient userClient;  // Fetch email & phone number from `user-service`
+
+//    public Notification createNotification(Notification notification) {
+//        notification.setStatus(NotificationStatus.PENDING);
+//        notification.setCreatedAt(LocalDateTime.now());
+//
+//        // Fetch user details from `user-service`
+//        UserResponse user = userClient.getUserById(notification.getRecipientId());
+//
+//        // 🔹 Debug: Print user details
+//        System.out.println("🔹 Retrieved User Details: " + user);
+//        System.out.println("🔹 User Contact Number: [" + user.getContactNumber() + "]");
+//
+//        if (user != null) {
+//            String email = user.getEmail();
+//            String phoneNumber = user.getContactNumber();
+//
+//            // ✅ Ensure the user has contact number or email
+//            if (notification.getNotificationType() == NotificationType.SMS) {
+//                if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+//                    throw new RuntimeException("❌ User does not have a registered mobile number.");
+//                }
+//            }
+//            // ✅ Send Email Notification
+//            if (notification.getNotificationType() == NotificationType.EMAIL) {
+//                String subject = "New Notification from Elearn";
+//                String body = "Dear " + user.getName() + ",\n\n" + notification.getNotificationMessage() + "\n\nBest Regards,\nElearn Team";
+//                emailService.sendEmail(email, subject, body);
+//                notification.setStatus(NotificationStatus.SENT);
+//                notification.setSentAt(LocalDateTime.now());
+//            }
+//        } else {
+//            throw new RuntimeException("❌ User not found in user-service!");
+//        }
+//
+//        return notificationRepository.save(notification);
+//    }
 
     public Notification createNotification(Notification notification) {
+
         notification.setStatus(NotificationStatus.PENDING);
         notification.setCreatedAt(LocalDateTime.now());
 
-        // Fetch user details from `user-service`
-        UserResponse user = userClient.getUserById(notification.getRecipientId());
-
-        // 🔹 Debug: Print user details
-        System.out.println("🔹 Retrieved User Details: " + user);
-        System.out.println("🔹 User Contact Number: [" + user.getContactNumber() + "]");
-
-        if (user != null) {
-            String email = user.getEmail();
-            String phoneNumber = user.getContactNumber();
-
-            // ✅ Ensure the user has contact number or email
-            if (notification.getNotificationType() == NotificationType.SMS) {
-                if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
-                    throw new RuntimeException("❌ User does not have a registered mobile number.");
-                }
-            }
-            // ✅ Send Email Notification
-            if (notification.getNotificationType() == NotificationType.EMAIL) {
-                String subject = "New Notification from Elearn";
-                String body = "Dear " + user.getName() + ",\n\n" + notification.getNotificationMessage() + "\n\nBest Regards,\nElearn Team";
-                emailService.sendEmail(email, subject, body);
-                notification.setStatus(NotificationStatus.SENT);
-                notification.setSentAt(LocalDateTime.now());
-            }
-        } else {
-            throw new RuntimeException("❌ User not found in user-service!");
-        }
-
         return notificationRepository.save(notification);
     }
-
     public List<Notification> getAllNotifications() {
         return notificationRepository.findAll();
     }
