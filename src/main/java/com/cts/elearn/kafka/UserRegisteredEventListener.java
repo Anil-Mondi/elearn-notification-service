@@ -10,7 +10,7 @@ import com.cts.elearn.service.NotificationService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
+//@Component
 public class UserRegisteredEventListener {
 
     private final NotificationService notificationService;
