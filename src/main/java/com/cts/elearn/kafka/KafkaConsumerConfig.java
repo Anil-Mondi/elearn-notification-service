@@ -15,8 +15,8 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import com.cts.elearn.dto.UserRegisteredEvent;
 
-@EnableKafka
-@Configuration
+//@EnableKafka
+//@Configuration
 public class KafkaConsumerConfig {
 
     @Bean
