@@ -47,13 +47,13 @@ public class NotificationService {
 //            String email = user.getEmail();
 //            String phoneNumber = user.getContactNumber();
 //
-//            // ✅ Ensure the user has contact number or email
+//            // Ensure the user has contact number or email
 //            if (notification.getNotificationType() == NotificationType.SMS) {
 //                if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
-//                    throw new RuntimeException("❌ User does not have a registered mobile number.");
+//                    throw new RuntimeException(" User does not have a registered mobile number.");
 //                }
 //            }
-//            // ✅ Send Email Notification
+//            //  Send Email Notification
 //            if (notification.getNotificationType() == NotificationType.EMAIL) {
 //                String subject = "New Notification from Elearn";
 //                String body = "Dear " + user.getName() + ",\n\n" + notification.getNotificationMessage() + "\n\nBest Regards,\nElearn Team";
@@ -62,7 +62,7 @@ public class NotificationService {
 //                notification.setSentAt(LocalDateTime.now());
 //            }
 //        } else {
-//            throw new RuntimeException("❌ User not found in user-service!");
+//            throw new RuntimeException("User not found in user-service!");
 //        }
 //
 //        return notificationRepository.save(notification);
