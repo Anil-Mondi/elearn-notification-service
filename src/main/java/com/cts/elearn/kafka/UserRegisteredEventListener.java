@@ -26,7 +26,7 @@ public class UserRegisteredEventListener {
     )
     public void handleUserRegistered(UserRegisteredEvent event) {
 
-        log.info("📩 USER REGISTERED EVENT RECEIVED: {}", event);
+        log.info("USER REGISTERED EVENT RECEIVED: {}", event);
 
         notificationService.handleUserRegistration(event);
     }
